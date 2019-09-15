@@ -6,9 +6,9 @@ before_install:
   - docker build -t suak2004/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true suak2004/react-test npm run test --coverage
+  - docker run -e CI=true suak2004/react-test npm run test -- --coverage
 
-after-success:
+after_success:
   - docker build -t suak2004/multi-client ./client
   - docker build -t suak2004/multi-nginx ./nginx
   - docker build -t suak2004/multi-server ./server
